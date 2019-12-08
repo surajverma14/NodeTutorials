@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>passport</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <% if(user) {%>
+                <li>
+                    <a href='/auth/logout'>logout</a>
+                </li>
+                <% }else{%>
+                <li>
+                    <a href='/auth/login'>Login</a>
+                </li>
+                <% } %>
+                <li>
+                    <a href='/'>HomePage</a>
+                </li>
+            </ul>
+        </nav>
+        <header>
+            <h1>Passport Tutorial</h1>
+            <h2>HomePage</h2>
+        </header>
+        <main>
+            <p>Hey!</p>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>passport</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    <a href='/auth/logout'>logout</a>
+                </li>
+                <li>
+                    <a href='/auth/login'>Login</a>
+                </li>
+                <li>
+                    <a href='/'>HomePage</a>
+                </li>
+            </ul>
+        </nav>
+        <header>
+            <h1>Passport Tutorial</h1>
+            
+        </header>
+        <main>
+            <img src="<%= user.thumbnail% >">
+            <p>Hey!,<%=user.username %></p>
+        </main>
+    </body>
+</html>
