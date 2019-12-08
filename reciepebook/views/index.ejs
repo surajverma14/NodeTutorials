@@ -1,0 +1,113 @@
+<% include partials/header %>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+        Add Recipe
+      </button>
+<% recipes.forEach(function(recipe){ %>
+    <div class="well">
+       
+        <h4> <%= recipe.name %>
+            <a class="btn btn-primary pull-right" data-toggle="collapse"
+             href="#recipe_<%= recipe.id %>" role="button" 
+             aria-expanded="false" aria-controls="recipe_<%= recipe.id %>">
+                    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true">
+                        </span>
+                  </a>
+        </h4>
+
+        <div class="collapse" id="recipe_<%= recipe.id %>">
+        <br/>
+        <br/>
+       
+        <p>
+        <strong>Ingredients:</strong><%= recipe.ingredients %>
+        </p>
+         <p>
+        <strong>Directions:</strong><%= recipe.directions %>
+        </p>
+        <br/>
+        <hr/>
+        <button class="btn btn-default edit-recipe" data-toggle="modal" 
+        data-target="#editformModal" data-id="<%= recipe.id %>" 
+        data-name="<%= recipe.name%>" data-ingredients="<%= recipe.ingredients%>""
+        data-directions="<%= recipe.directions%>" >
+                <span class="glyphicon glyphicon-edit" aria-hidden="true">
+                    </span>
+        </button>
+        <button class="btn btn-danger delete-recipe" data-id="<%= recipe.id %>">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true">
+                    </span>
+        </button>
+        </div>
+       
+    </div>
+    <% }) %>
+    <!-- form Modal -->
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <form method="POST" action="/add">
+            <div class="modal-header">
+              <h5 class="modal-title" id="formModalLabel">Add Recipe</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                  <label>Recipe Name</label>
+                  <input type="text" class="form-control" name="name" />
+              </div>
+              <div class="form-group">
+                    <label>Ingredients</label>
+                    <textarea type="text" class="form-control" name="ingredients" ></textarea>
+                </div>
+                <div class="form-group">
+                        <label>Directions</label>
+                        <textarea type="text" class="form-control" name="directions" ></textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+        </form>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Editform Modal -->
+<div class="modal fade" id="editformModal" tabindex="-1" role="dialog" aria-labelledby="editformModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <form method="POST" action="/edit">
+                <input type="hidden" id="edit-form-id" name='id'/>
+            <div class="modal-header">
+              <h5 class="modal-title" id="editformModalLabel">Add Recipe</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                  <label>Recipe Name</label>
+                  <input type="text" class="form-control" name="name" id="edit-form-name" />
+              </div>
+              <div class="form-group">
+                    <label>Ingredients</label>
+                    <textarea type="text" class="form-control" name="ingredients" id="edit-form-ingredients" ></textarea>
+                </div>
+                <div class="form-group">
+                        <label>Directions</label>
+                        <textarea type="text" class="form-control" name="directions" id="edit-form-directions" ></textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+        </form>
+          </div>
+        </div>
+      </div>
+<% include partials/footer %>
