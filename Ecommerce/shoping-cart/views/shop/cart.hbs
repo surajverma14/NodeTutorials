@@ -1,0 +1,51 @@
+{{# if products }}
+    <div class="row">
+    <div class="col-md-8 offset-md-2">
+        <ul class="list-group">
+            {{# each products}}
+            <li class="list-group-item">
+                 <div class="row">
+                    <div class="col-6 col-md-3"><span class="lead">{{this.item.title}}</span></div>
+                     <div class="col-6 col-md-3"> <span  class="badge badge-secondary">Quantity:{{this.qty}}</span></div>
+                    <div class="col-6 col-md-3"> 
+                        <span class="label label-success lead">TotalPrice:{{this.price}}</span></div>
+                    <div class="col-6 col-md-3">
+                        <div class="btn-group float-right">
+                     <button class="btn btn-primary btn-xs dropdown-toggle float-right" type="button" data-toggle="dropdown" >Action
+                         <span class="caret"></span>
+                     </button>
+                     <ul class="dropdown-menu">
+                         <li><a href="/reduce/{{this.item._id}}">Remove Item</a></li>
+                         <li><a href="/remove/{{this.item._id}}">Remove All</a></li>
+                     </ul>
+                 </div>
+                    </div>
+                </div>
+                    
+                 
+            </li>
+           {{/each}}
+        </ul>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-md-8 offset-md-2">
+        <strong class="lead">Total Price:{{totalPrice}}</strong>
+
+    </div>
+    <hr>
+    <div class="col-md-8 offset-md-2">
+        <a href="/checkout" type="button" class="btn btn-success">Checkout</a>
+    </div>
+    </div>
+
+{{else}}
+      <div class="row">
+    <div class="col-md-8 offset-md-2">
+          <strong>No Item in Cart</strong>
+    </div>
+    </div>
+{{/if}}
+
+  

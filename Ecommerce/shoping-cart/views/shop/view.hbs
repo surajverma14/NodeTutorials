@@ -1,0 +1,60 @@
+
+<main class="mt-5 pt-4">
+    {{# each products}}
+  <div class="container dark-grey-text mt-5">
+    <!--Grid row-->
+    {{# each this}}
+    <div class="row wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <img src="{{this.imagePath}}" class="img-fluid" alt="">
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Content-->
+        <div class="p-4">
+
+          <div class="mb-3">
+            <a href="">
+              <span class="badge purple mr-1">{{this.category }}</span>
+            </a>
+          </div>
+
+           <p class="lead">
+            <span>{{ this.title }}</span>
+           </p> 
+          <p class="lead">
+            <span>${{ this.price }}</span>
+         
+          </p>
+
+          <p class="lead font-weight-bold">Description</p>
+
+          <p>{{this.description }}</p>
+
+          <a href="/add-to-cart/{{this._id}}" class="btn btn-primary btn-md my-0 p">
+            Add to cart
+            <i class="fas fa-shopping-cart ml-1"></i>
+          </a>
+         
+
+        </div>
+        <!--Content-->
+
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+    </div>
+    <!--Grid row-->
+{{/each}}
+  </div>
+  {{/each}}
+</main>
